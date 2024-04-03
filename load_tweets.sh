@@ -18,7 +18,7 @@ for file in $files; do
     ./load_tweets.py --db $pg_normalized_url --inputs $file
 done
 
-# echo 'load denormalized'
-# for file in $files; do
-#     unzip -p $file | sed 's/\\u0000//g' | psql $pg_denormalized_url -c "COPY tweets_jsonb (data) FROM STDIN csv quote e'\x01' delimiter e'\x02';"
-# done
+echo 'load denormalized'
+for file in $files; do
+    unzip -p $file | sed 's/\\u0000//g' | psql $pg_denormalized_url -c "COPY tweets_jsonb (data) FROM STDIN csv quote e'\x01' delimiter e'\x02';"
+done
