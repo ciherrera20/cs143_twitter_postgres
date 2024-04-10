@@ -261,7 +261,7 @@ def insert_tweet(connection,tweet):
             'state_code': state_code,
             'lang': tweet['lang'],
             'place_name': place_name,
-            'geo': f'{geo_str}({geo_coords})'
+            'geo': f'{geo_str}({geo_coords})' if geo_str is not None else None
         })
 
         ########################################
